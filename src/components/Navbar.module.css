@@ -43,11 +43,13 @@
   .form {
     display: flex;
     /* Center the form vertically */
-    padding: 8px; /* Add padding for better spacing */
+    padding: 5px; /* Add padding for better spacing */
     background-color: transparent; /* Set background color to transparent */
     border-radius: 20px; /* Add rounded corners */
     border: 2px solid var(--color-text); /* Add border for visibility */
-    margin-bottom: 20px; /* Add space between input and navbar bottom */
+    margin-bottom: 10px; /* Add space between input and navbar bottom */
+    margin-left: 4rem; /* Adjust left margin */
+    margin-right: 1rem;
   }
   
   .inputbar {
@@ -55,11 +57,12 @@
     border: none; /* Remove default input border */
     outline: none; /* Remove input outline */
     font-size: 16px; /* Adjust font size */
-    padding: 8px; /* Add padding */
+    padding: 3px; /* Add padding */
     margin-left: 8px; /* Add space between input and icon */
     color: var(--color-text); /* Set text color */
     background-color: transparent; /* Set background color to transparent */
-    
+    width: 100%; /* Ensure the input field fills the entire width of the form */
+    min-width: 0; /* Ensure the input field can shrink if needed */
   }
   
   .inputbar::placeholder {

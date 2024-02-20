@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import 'tailwindcss/tailwind.css';
+import { getImageUrl } from '../utils';
 
 export default function SignUp() {
   const [formDataValues,setFormDataValues] = useState({});
@@ -33,7 +34,14 @@ export default function SignUp() {
     }
   }
   return (
-    <div className='bg-gray-200 min-h-screen flex items-center justify-center'>
+    <div
+    className="min-h-screen flex items-center justify-center"
+    style={{
+      backgroundImage: `url(${getImageUrl('app/background.jpg')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      
+    }}>
       <div className='bg-white p-8 rounded-lg shadow-xl'>
         <h1 className='text-3xl text-gray-800 font-semibold mb-7 text-center'>Create a New Account</h1>
         <form className='flex flex-col gap-4' onSubmit={submitHandler}>

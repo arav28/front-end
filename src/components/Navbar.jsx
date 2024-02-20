@@ -8,10 +8,10 @@ export const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <a className={styles.title} href="/">
-        Rental Service App
+        RentalService
       </a>
       <form className={styles.form}>
-        <input
+        <input 
           type="text"
           placeholder="Search items..."
           className={styles.inputbar}
