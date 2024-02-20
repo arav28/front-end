@@ -42,11 +42,12 @@
   
   .form {
     display: flex;
-     /* Center the form vertically */
+    /* Center the form vertically */
     padding: 8px; /* Add padding for better spacing */
     background-color: transparent; /* Set background color to transparent */
     border-radius: 20px; /* Add rounded corners */
     border: 2px solid var(--color-text); /* Add border for visibility */
+    margin-bottom: 20px; /* Add space between input and navbar bottom */
   }
   
   .inputbar {
