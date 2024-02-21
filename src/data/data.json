@@ -1,0 +1,164 @@
+{
+    "Header": {
+      "title": "RENT YOUR DREAM CAR",
+      "paragraph": "Live the life of luxury. Just rent a car from our vast collection. Enjoy every moment with your family."
+    },
+    
+    
+      "About": {
+        "paragraph": "At HPASS Rentals, we provide a versatile Rental & Services Management System that streamlines the connection between customers and management. Our platform is designed for ease, efficiency, and comprehensive service, accommodating a range of rental items and professional services.",
+        "Why": [
+          "Streamlined management system",
+          "Versatile rental options",
+          "Efficient and user-friendly",
+          "Professional-grade services",
+          "Community-driven approach"
+        ]
+      }
+    
+    ,
+    "Gallery": [
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/01-large.jpg",
+        "smallImage": "img/portfolio/01-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/02-large.jpg",
+        "smallImage": "img/portfolio/02-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/03-large.jpg",
+        "smallImage": "img/portfolio/03-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/04-large.jpg",
+        "smallImage": "img/portfolio/04-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/05-large.jpg",
+        "smallImage": "img/portfolio/05-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/06-large.jpg",
+        "smallImage": "img/portfolio/06-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/07-large.jpg",
+        "smallImage": "img/portfolio/07-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/08-large.jpg",
+        "smallImage": "img/portfolio/08-small.jpg"
+      },
+      {
+        "title": "Project Title",
+        "largeImage": "img/portfolio/09-large.jpg",
+        "smallImage": "img/portfolio/09-small.jpg"
+      }
+    ],
+    "Services": 
+    [
+      {
+        "name": "Vehicle Rental Management",
+        "icon": "faCarSide",
+        "description": "Browse and select from a diverse range of rental vehicles including cars, trucks, and vans. Access detailed vehicle information, availability, and pricing for effortless reservation and booking."
+      },
+      {
+        "name": "Service Management",
+        "icon": "faWrench",
+        "description": "Access comprehensive vehicle maintenance and repair services, including oil changes, tire rotations, and cleaning. Schedule service appointments easily and explore various service packages and pricing."
+      },
+      {
+        "name": "Customer Interaction",
+        "icon": "faCommentDots",
+        "description": "Facilitate seamless communication between customers and management with our messaging system. Submit inquiries, requests, or feedback and rate your experience with our vehicles and services."
+      },
+      {
+        "name": "Management Dashboard",
+        "icon": "faTachometerAlt",
+        "description": "Experience tailored management and customer views with tools to oversee rental operations, track inventory, manage appointments, and monitor interactions. Efficiently handle inquiries and service requests."
+      },
+      {
+        "name": "Customization and Scalability",
+        "icon": "faSlidersH",
+        "description": "Our system is designed for customization and scalability, enabling integration of new features. Customize rental offerings, pricing, and promotional campaigns to meet evolving business needs."
+      },
+      {
+        "name": "User Authentication and Security",
+        "icon": "faUserShield",
+        "description": "Ensure account protection with secure authentication mechanisms. Our system prioritizes data privacy, complies with regulations, and uses encryption to safeguard sensitive information."
+      }
+    ],
+      
+    "Testimonials": [
+      {
+        "img": "img/testimonials/01.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/02.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      },
+      {
+        "img": "img/testimonials/03.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/04.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      },
+      {
+        "img": "img/testimonials/05.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/06.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      }
+    ],
+    
+    "Contact": {
+      "address": "Bloomington, Indiana",
+      "phone": "+1 ",
+      "email": "hpass@company.com",
+      "facebook": "fb.com",
+      "twitter": "twitter.com",
+      "youtube": "youtube.com"
+    },
+    "Features": [
+      {
+        "icon": "faPeopleArrows",
+        "title": "Order Management",
+        "text": "Manage and interact with all your customers within Hpass. Quickly create, update, and track all your online and offline orders for all accounts."
+      },
+      {
+        "icon": "faCalendarCheck",
+        "title": "Inventory Management",
+        "text": "Track the location, maintenance status, and availability of your rentals with ease, and set handy alerts to prevent stockouts."
+      },
+      {
+        "icon": "faShoppingCart",
+        "title": "E-Commerce",
+        "text": "Increase traffic and expand your customer base by helping visitors find your business, see your rental catalog, and reserve items online."
+      },
+      {
+        "icon": "faFileInvoiceDollar",
+        "title": "Easy Invoicing",
+        "text": "Automatically generate customized, professional-grade invoices and easily track payments on monthly and yearly orders."
+      }
+    ]
+  }
