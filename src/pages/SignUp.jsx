@@ -17,7 +17,7 @@ export default function SignUp() {
     event.preventDefault();
     try {
       setLoadFlag(true);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch('/api/v1/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
