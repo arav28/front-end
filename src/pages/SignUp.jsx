@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import OAuth from '../components/OAuth';
-
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const [formValues, setFormValues] = useState({});
@@ -18,10 +17,10 @@ export default function SignUp() {
     event.preventDefault();
     try {
       setLoadFlag(true);
-      const res = await fetch('/api/v1/auth/register', {
-        method: 'POST',
+      const res = await fetch("/api/v1/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formValues),
       });
@@ -34,53 +33,77 @@ export default function SignUp() {
       }
       setLoadFlag(false);
       setErrMsg(null);
-      navigator('/sign-in');
+      navigator("/sign-in");
     } catch (errMsg) {
       setLoadFlag(false);
       setErrMsg(errMsg.message);
     }
   };
   return (
-    <div className=' p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Create New Account</h1>
-      <form onSubmit={submitFormHandler} className='flex flex-col gap-4'>
+    <div className=" p-3 max-w-lg mx-auto">
+      <h1 className="text-3xl text-center font-semibold my-7 text-white">
+        Create New Account
+      </h1>
+      <form onSubmit={submitFormHandler} className="flex flex-col gap-4">
         <input
-          type='text'
-          placeholder='username'
-          className='border p-3 rounded-lg'
-          id='username'
+          type="text"
+          placeholder="username"
+          className="border p-3 rounded-lg"
+          id="username"
           onChange={formChangeInputHandler}
         />
         <input
-          type='email'
-          placeholder='email'
-          className='border p-3 rounded-lg'
-          id='email'
+          type="email"
+          placeholder="email"
+          className="border p-3 rounded-lg"
+          id="email"
           onChange={formChangeInputHandler}
         />
         <input
-          type='password'
-          placeholder='password'
-          className='border p-3 rounded-lg'
-          id='password'
+          type="password"
+          placeholder="password"
+          className="border p-3 rounded-lg"
+          id="password"
           onChange={formChangeInputHandler}
         />
 
+        <label htmlFor="securityQuestion" className="text-white text-xl">
+          What is your favourite color?
+        </label>
+        <input
+          type="text"
+          placeholder="Security Question"
+          className="border p-3 rounded-lg"
+          id="question1"
+          onChange={formChangeInputHandler}
+        ></input>
+
+        <label htmlFor="securityQuestion" className="text-xl text-white">
+          what is your favourite season?
+        </label>
+        <input
+          type="text"
+          placeholder="Security Question"
+          className="border p-3 rounded-lg"
+          id="question2"
+          onChange={formChangeInputHandler}
+        ></input>
+
         <button
           disabled={flagLoad}
-          className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {flagLoad ? 'Loading...' : 'Sign up'}
+          {flagLoad ? "Loading..." : "Sign up"}
         </button>
-        <OAuth/>
+        <OAuth />
       </form>
-      <div className='flex gap-2 mt-5'>
+      <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
-        <Link to={'/sign-in'}>
-          <span className='text-blue-700'>Log in</span>
+        <Link to={"/sign-in"}>
+          <span className="text-blue-700">Log in</span>
         </Link>
       </div>
-      {errMsg && <p className='text-red-500 mt-5'>{errMsg}</p>}
+      {errMsg && <p className="text-red-500 mt-5">{errMsg}</p>}
     </div>
   );
 }

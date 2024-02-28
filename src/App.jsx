@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp';
 import  Home  from './pages/Home';
 import { Navbar } from './components/Navbar';
 import styles from "./App.module.css"
+import ResetPasswordPage from './pages/ResetPasswordPage';
 function App() {
   
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Home/>} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
+      <Route path='/reset-password' element={<ResetPasswordPage />} />
     </Routes>
     </BrowserRouter>
     </div>
