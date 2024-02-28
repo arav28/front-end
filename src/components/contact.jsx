@@ -20,19 +20,29 @@ export const Contact = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message);
-
-    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_PUBLIC_KEY")
-      .then(
-        (result) => {
-          console.log(result.text);
+    // Existing code to send email to yourself
+    emailjs.sendForm('service_gvy0tc1', 'template_d4jfbqd', e.target, 'GM0bgFceMsWrtDbI2')
+      .then((result) => {
+        console.log(result.text);
+        // After sending the notification to yourself, send a response to the sender
+        emailjs.send('service_gvy0tc1', 'template_ycuqufw', {
+          to_name: name,
+          to_email: email,
+          response_message: "Thank you for reaching out. We will get back to you soon.",
+        }, 'GM0bgFceMsWrtDbI2')
+        .then((response) => {
+          console.log("Response Email SENT!", response.status, response.text);
           clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+        }, (error) => {
+          console.log("Response Email FAILED...", error);
+
+        });
+        clearState();
+      }, (error) => {
+        console.log(error.text);
+      });
   };
+  
 
   return (
     <div id="contact" className="bg-customcolor text-black py-20 px-4">
@@ -50,6 +60,7 @@ export const Contact = (props) => {
                     <input
                       type="text"
                       name="name"
+                      value={name}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       placeholder="Name"
                       required
@@ -60,6 +71,7 @@ export const Contact = (props) => {
                     <input
                       type="email"
                       name="email"
+                      value={email}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       placeholder="Email"
                       required
@@ -70,6 +82,7 @@ export const Contact = (props) => {
                 <div className="px-3">
                   <textarea
                     name="message"
+                    value={message}
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     rows="4"
                     placeholder="Message"

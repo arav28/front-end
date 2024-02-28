@@ -7,7 +7,7 @@ export const Navbar = () => {
   const [menuDraw, setMenuDraw] = useState(false);
 
   return (
-    <nav className="navbar flex items-center justify-between px-10 py-4 bg-gray-100">
+    <nav className= "navbar flex items-center justify-between px-10 py-4 bg-floralwhite">
       <Link to="/" className="text-2xl font-semibold">
       <img src={logo} alt="Logo" className="h-10 mr-4"/>
         HPASS RENTALS
@@ -39,7 +39,7 @@ export const Navbar = () => {
       <div className={`md:flex flex-col md:flex-row md:items-center md:w-auto w-full ${menuDraw ? 'block' : 'hidden'}`}>
         <ul className="md:flex flex-col md:flex-row md:ml-auto md:mr-0 items-center">
           <li>
-            <Link to="/" className="md:ml-4 text-lg font-bold">Home</Link>
+            <a href="/" className="md:ml-4 text-lg font-bold">Home</a>
           </li>
           <li>
             <a href="#about" className="md:ml-4 text-lg font-bold">About</a>
