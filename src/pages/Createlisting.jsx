@@ -25,7 +25,7 @@ export default function CreateListing() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NWRhNzkzMDczNDM3MzRmNDE1Y2ViOTEiLCJ1c2VybmFtZSI6InByYWdhdGgiLCJpYXQiOjE3MDg4MTY2ODgsImV4cCI6MTcxNDAwMDY4OH0.g2z8B-W7fn0-X3gfLxmmYYrniy5IivJfI103jVV_NLw',
+            'Authorization': 'Bearer ',
           },
         });
         if (!response.ok) throw new Error('Network response was not ok');
@@ -57,7 +57,7 @@ export default function CreateListing() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NWRhNzkzMDczNDM3MzRmNDE1Y2ViOTEiLCJ1c2VybmFtZSI6InByYWdhdGgiLCJpYXQiOjE3MDg4MTY2ODgsImV4cCI6MTcxNDAwMDY4OH0.g2z8B-W7fn0-X3gfLxmmYYrniy5IivJfI103jVV_NLw'
+          'Authorization':'Bearer '
         },
         body: JSON.stringify(formData)
       });
@@ -101,7 +101,7 @@ export default function CreateListing() {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NWRhNzkzMDczNDM3MzRmNDE1Y2ViOTEiLCJ1c2VybmFtZSI6InByYWdhdGgiLCJpYXQiOjE3MDg4MTY2ODgsImV4cCI6MTcxNDAwMDY4OH0.g2z8B-W7fn0-X3gfLxmmYYrniy5IivJfI103jVV_NLw',
+          'Authorization': 'Bearer ',
         },
       });
   

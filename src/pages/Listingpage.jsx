@@ -50,7 +50,7 @@ export default function Listingpage() {
           method: 'GET', // Method is optional if you are making a GET request, included here for clarity
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NWRhNzkzMDczNDM3MzRmNDE1Y2ViOTEiLCJ1c2VybmFtZSI6InByYWdhdGgiLCJpYXQiOjE3MDg4MTY2ODgsImV4cCI6MTcxNDAwMDY4OH0.g2z8B-W7fn0-X3gfLxmmYYrniy5IivJfI103jVV_NLw', // Uncomment and replace if you need to send an authorization token
+            'Authorization': 'Bearer ', // Uncomment and replace if you need to send an authorization token
           },
         });
         if (!response.ok) {
