@@ -6,10 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      
       colors: {
-        floralwhite: '#EEEDEB', // Existing customization
-        customcolor: '#E1CCBE', // Added dark blue color
+        floralwhite: '#EEEDEB', 
+        customcolor: '#E1CCBE', 
       },
       
     },
