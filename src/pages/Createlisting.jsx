@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import ListingCard from '../components/ListingCard'; 
+import { useSelector } from "react-redux";
 
 export default function CreateListing() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ export default function CreateListing() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ',
+            Authorization: `Bearer ${currUser?.data?.token}`
           },
         });
         if (!response.ok) throw new Error('Network response was not ok');
@@ -41,6 +42,7 @@ export default function CreateListing() {
   }, []);
 
   const navigator = useNavigate();
+  const { currUser } = useSelector((state) => state.user_mod);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,7 +59,7 @@ export default function CreateListing() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':'Bearer '
+           Authorization: `Bearer ${currUser?.data?.token}`
         },
         body: JSON.stringify(formData)
       });
@@ -101,7 +103,7 @@ export default function CreateListing() {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ',
+          Authorization: `Bearer ${currUser?.data?.token}`
         },
       });
   

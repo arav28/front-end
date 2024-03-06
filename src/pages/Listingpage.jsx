@@ -52,7 +52,8 @@ export default function Listingpage() {
           method: "GET", // Method is optional if you are making a GET request, included here for clarity
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer ", // Uncomment and replace if you need to send an authorization token
+            Authorization: `Bearer ${currUser?.data?.token}`
+            , // Uncomment and replace if you need to send an authorization token
           },
         });
         if (!response.ok) {

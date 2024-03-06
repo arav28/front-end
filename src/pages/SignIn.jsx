@@ -13,7 +13,7 @@ import ForgotPassword from "./ForgotPassword";
 export default function SignUp() {
   const [formValues, setFormValues] = useState({});
   const [forgotFlag, setforgotFlag] = useState(false);
-  const { loading, error } = useSelector((state) => state.user_mod);
+  const { loading, err } = useSelector((state) => state.user_mod);
   const navigator = useNavigate();
   const dispatchAction = useDispatch();
   const formChangeInputHandler = (event) => {
@@ -25,6 +25,10 @@ export default function SignUp() {
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
+    if (!formValues.email || !formValues.password) {
+      dispatchAction(FailedSign("Please provide both email and password."));
+      return;
+    }
     try {
       dispatchAction(beginingSignin());
       const res = await fetch("/api/v1/auth/login", {
@@ -87,7 +91,7 @@ export default function SignUp() {
           <span className="text-blue-700">Sign up</span>
         </Link>
       </div>
-      {error && <p className="text-red-500 mt-5">{error}</p>}
+      {err && <p className="text-red-500 mt-5">{err}</p>}
       {forgotFlag && <ForgotPassword />}
     </div>
   );
