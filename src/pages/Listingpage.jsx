@@ -7,32 +7,35 @@ const ListingCard = ({ car }) => {
   const placeholderImage = "../../assets/car2.jpg";
   
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 bg-white">
-      <div className="h-48 bg-gray-200 flex items-center justify-center">
-        {/* Use car.imageUrl if available, otherwise use placeholder */}
-        <img
-          className="object-cover h-full w-full"
-          src={car.imageUrl || placeholderImage}
-          alt={`${car.carMake} ${car.carModel}`}
-        />
-      </div>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-1">{`${car.carMake} ${car.carModel}`}</div>
-        <ul className="list-none">
-          <li className="mb-1 font-serif">Year: {car.year}</li>
-          <li className="mb-1 font-serif">Mileage: {car.mileage}</li>
-          <li className="mb-1 font-serif">Transmission: {car.transmission}</li>
-          <li className="mb-1 font-serif">Fuel Type: {car.fuelType}</li>
-          <li className="mb-1 font-serif">Seats: {car.seats}</li>
-          <li className="mb-1 font-serif">Price Per Day: ${car.pricePerDay}</li>
-          <li className="mb-1 font-serif">
-            Available From: {car.availableFrom}
-          </li>
-          <li className="mb-1 font-serif">Available To: {car.availableTo}</li>
-          <li className="mb-1 font-serif">Location: {car.location}</li>
-        </ul>
-      </div>
-    </div>
+<div className="max-w-sm rounded overflow-hidden shadow-lg m-4 bg-white">
+  <div className="h-48 bg-gray-200 flex items-center justify-center">
+    {/* Use car.imageUrl if available, otherwise use placeholder */}
+    <img
+      className="object-cover h-full w-full"
+      src={car.imageUrl || placeholderImage}
+      alt={`${car.carMake} ${car.carModel}`}
+    />
+  </div>
+  <div className="px-6 py-4">
+    <div className="font-bold text-xl mb-1">{`${car.carMake} ${car.carModel}`}</div>
+    <ul className="list-none">
+      <li className="mb-1 font-serif">Year: {car.year}</li>
+      <li className="mb-1 font-serif">Mileage: {car.mileage}</li>
+      <li className="mb-1 font-serif">Transmission: {car.transmission}</li>
+      <li className="mb-1 font-serif">Fuel Type: {car.fuelType}</li>
+      <li className="mb-1 font-serif">Seats: {car.seats}</li>
+      <li className="mb-1 font-serif">Price Per Day: ${car.pricePerDay}</li>
+      <li className="mb-1 font-serif">Available From: {car.availableFrom}</li>
+      <li className="mb-1 font-serif">Available To: {car.availableTo}</li>
+      <li className="mb-1 font-serif">
+        <Link to={`/itemLocation`} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          View item location
+        </Link>
+      </li>
+    </ul>
+  </div>
+</div>
+
   );
 };
 
