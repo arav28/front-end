@@ -11,6 +11,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import PrivateRoute from "./components/RoutingFolder/PrivateRoute";
 import CRUDListings from "./pages/Admin/CRUDListings";
 import ItemLocation from "./components/MapComponents/ItemLocation";
+import Updatelisting from './pages/Updatelistings';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/Createlisting" element={<Createlisting />} />
+          <Route path="/Updatelisting" element={<Updatelisting />} />
           <Route path="/Listingpage" element={<Listingpage />} />
           <Route element= {<PrivateRoute/>}>
             <Route path='/modify-listing' element={<CRUDListings/>}/>
