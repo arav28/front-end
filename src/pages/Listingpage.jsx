@@ -28,7 +28,7 @@ const ListingCard = ({ car }) => {
       <li className="mb-1 font-serif">Available From: {car.availableFrom}</li>
       <li className="mb-1 font-serif">Available To: {car.availableTo}</li>
       <li className="mb-1 font-serif">
-        <Link to={`/itemLocation`} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <Link to={`/itemLocation?lat=${car.location.lat}&lng=${car.location.lng}`} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           View item location
         </Link>
       </li>
@@ -101,7 +101,9 @@ export default function Listingpage() {
         {isLoading ? (
           <p className="mx-auto">Loading...</p>
         ) : cars.length > 0 ? (
-          cars.map((car) => <ListingCard key={car.id} car={car} />)
+          cars.map((car) => (
+            <ListingCard key={`${car.id}-${Math.random()}`} car={car} />
+          ))
         ) : (
           <p className="mx-auto">No listings available.</p>
         )}

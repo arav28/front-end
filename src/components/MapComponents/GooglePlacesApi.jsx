@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { REACT_APP_GOOGLE_MAPS_KEY } from "../../constants/constants"
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setItemLocation
-} from "../../redux/item/carItemSlice";
+import { REACT_APP_GOOGLE_MAPS_KEY } from "../../constants/constants";
+
 let autoComplete;
 
 const loadScript = (url, callback) => {
@@ -25,11 +22,9 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-const SearchLocationInput = () => {
+const SearchLocationInput = ({ onChangeLocation }) => {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
-  
-  const dispatchAction = useDispatch();
 
   const handleScriptLoad = (updateQuery, autoCompleteRef) => {
     autoComplete = new window.google.maps.places.Autocomplete(
@@ -50,16 +45,15 @@ const SearchLocationInput = () => {
 
     const query = addressObject.formatted_address;
     updateQuery(query);
-    console.log("place ",{ query });
+    console.log({ query });
 
     const latLng = {
       lat: addressObject?.geometry?.location?.lat(),
       lng: addressObject?.geometry?.location?.lng(),
     };
 
-    console.log("Lat-Long ",{ latLng });
-    // setSelectedLocation(latLng);
-    dispatchAction(setItemLocation(latLng));
+    console.log({ latLng });
+    onChangeLocation(latLng);
   };
 
   useEffect(() => {

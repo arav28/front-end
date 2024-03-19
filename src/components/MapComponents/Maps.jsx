@@ -1,7 +1,5 @@
-// MapComponent.jsx
-
 import React from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { REACT_APP_GOOGLE_MAPS_KEY } from "../../constants/constants";
 
 const MapComponent = ({ selectedLocation }) => {
@@ -13,25 +11,21 @@ const MapComponent = ({ selectedLocation }) => {
     mapRef.current = map;
   }, []);
   if (loadError) return "Error";
-  if (!isLoaded) return "Loading Maps...";
+  if (!isLoaded) return "Maps";
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div style={{ marginTop: "50px" }}>
       <GoogleMap
         mapContainerStyle={{
-          width: "100%",
-          height: "400px",
+          height: "800px",
         }}
         center={selectedLocation}
         zoom={13}
         onLoad={onMapLoad}
       >
-        <Marker
+        <MarkerF
           position={selectedLocation}
-          icon={{
-            url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-            scaledSize: new window.google.maps.Size(30, 30),
-          }}
+          icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
         />
       </GoogleMap>
     </div>
