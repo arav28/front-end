@@ -7,6 +7,8 @@ import SearchLocationInput from "../components/MapComponents/GooglePlacesApi";
 
 
 export default function CreateListing() {
+  const [listings, setListings] = useState([]);
+  const { currUser } = useSelector((state) => state.user_mod);
   const [formData, setFormData] = useState({
     carMake: "",
     carModel: "",
@@ -20,64 +22,76 @@ export default function CreateListing() {
     availableTo: "",
     location: "",
   });
-  const [listings, setListings] = useState([]);
+  
 
   const { currItemLocation } = useSelector((state) => state.item_mod);
   const navigator = useNavigate();
-  const { currUser } = useSelector((state) => state.user_mod);
+  
 
-  useEffect(() => {
-    setFormData((prevData) => ({
-      ...prevData,
-      location: currItemLocation,
-    }));
-  }, [currItemLocation]);
-
-  useEffect(() => {
-    const fetchListings = async () => {
-      try {
-        const response = await fetch("/api/v1/cars/getAllCarsListings", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${currUser?.data?.token}`,
-          },
+  const fetchListings = async () => {
+    try {
+        const response = await fetch('/api/v1/cars/getAllOwnerCarsListings', {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${currUser?.data?.token}` // Assuming the token is stored directly in currUser
+            }
         });
-        if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
-        setListings(data.data); // Adjust this line based on the structure of your response
-      } catch (error) {
-        console.error("Error fetching listings:", error);
-        // Handle error appropriately
-      }
-    };
-
+        console.log(data);
+        if (data && Array.isArray(data.data)) {
+            setListings(data.data); // Assuming backend filters by ownerId, no need to filter on client-side
+        } else {
+            console.log('Unexpected response structure:', data);
+        }
+    } catch (error) {
+        console.error('Failed to fetch listings:', error);
+    }
+};
+useEffect(() => {
+  setFormData((prevData) => ({
+    ...prevData,
+    location: currItemLocation,
+  }));
+}, [currItemLocation]);
+useEffect(() => {
     fetchListings();
-  }, []);
+}, [currUser?.token, currUser?.id]); // Dependency array to re-fetch on token or userID change
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
+    setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
     }));
-  };
+};
+
+const handleUpdate = (car) => {
+    setFormData({ ...car,
+        availableFrom: car.availableFrom.slice(0, 10),
+        availableTo: car.availableTo.slice(0, 10) 
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/v1/cars/createCarListings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${currUser?.data?.token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+    console.log(formData);
+    const endpoint = formData._id ? `/api/v1/cars/updateCarListings/${formData._id}` : '/api/v1/cars/createCarListings';
+        const method = formData._id ? 'PATCH' : 'POST';
 
-      if (!response.ok) {
-        throw new Error("Failed to create listing");
-      }
+        try {
+            const response = await fetch(endpoint, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${currUser?.data?.token}`
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to save the car listing');
+            }
 
       // Assuming the response from the backend contains the created listing data
       const createdListing = await response.json();
@@ -97,7 +111,8 @@ export default function CreateListing() {
         availableTo: "",
         location: "",
       });
-      navigator("/Listingpage");
+      await fetchListings();
+      navigator('/Listingpage', { replace: true, state: { refresh: true } });
 
       // Optionally, you can display a success message or redirect the user to a different page
     } catch (error) {
@@ -290,19 +305,20 @@ export default function CreateListing() {
       </div>
       <div className="w-1/2 p-12">
         <div className="flex flex-col">
-          <h2 className="text-2xl font-semibold mb-4"></h2>
+        <h2 className="text-2xl font-semibold mb-4">Your Listed Rides</h2>
           <div className="space-y-4">
-            {listings.length > 0 ? (
-              listings.map((car) => (
-                <ListingCard
-                  key={car._id}
-                  car={car}
-                  onDelete={() => handleDelete(car._id)}
-                />
-              ))
-            ) : (
-              <p>No listings available.</p>
-            )}
+          {
+  listings.length > 0 &&
+    listings.map((car) => (
+      <ListingCard 
+        key={car._id} 
+        car={car} 
+        onUpdate={() => handleUpdate(car)}
+        onDelete={() => handleDelete(car._id)} 
+      />
+    ))
+}
+
           </div>
         </div>
       </div>
