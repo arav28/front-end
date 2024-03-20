@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useLocation } from 'react-router-dom';
 
 function formatDate(isoString) {
   const date = new Date(isoString);
@@ -13,12 +12,10 @@ function formatDate(isoString) {
 }
 
 const ListingCard = ({ car }) => {
-  // Define a placeholder image path
+
   const placeholderImage = "../../assets/car2.jpg";
   const formattedAvailableFrom = formatDate(car.availableFrom);
   const formattedAvailableTo = formatDate(car.availableTo);
-
-  
   
   return (
 <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 bg-white">
@@ -42,7 +39,7 @@ const ListingCard = ({ car }) => {
       <li className="mb-1 font-serif">Available From: {formattedAvailableFrom}</li>
       <li className="mb-1 font-serif">Available To: {formattedAvailableTo}</li>
       <li className="mb-1 font-serif">
-        <Link to={`/itemLocation`} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <Link to={`/itemLocation?lat=${car.location.lat}&lng=${car.location.lng}`} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           View item location
         </Link>
       </li>
@@ -60,9 +57,6 @@ export default function Listingpage() {
   const [error, setError] = useState(null);
   const { currUser } = useSelector((state) => state.user_mod);
   
-
-  const location = useLocation();
-
   useEffect(() => {
     async function fetchListings() {
       setIsLoading(true); // Begin loading
@@ -73,14 +67,13 @@ export default function Listingpage() {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${currUser?.data?.token}`
-            , 
+            , // Uncomment and replace if you need to send an authorization token
           },
         });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data);
         setCars(data.data);
       } catch (error) {
         console.error("Error fetching listings:", error);
@@ -91,7 +84,7 @@ export default function Listingpage() {
     }
 
     fetchListings();
-  }, [location.state?.refresh]);
+  }, []);
 
   return (
     <main className="container mx-auto p-4 justify-center">
@@ -119,7 +112,9 @@ export default function Listingpage() {
         {isLoading ? (
           <p className="mx-auto">Loading...</p>
         ) : cars.length > 0 ? (
-          cars.map((car) => <ListingCard key={car.id} car={car} />)
+          cars.map((car) => (
+            <ListingCard key={`${car.id}-${Math.random()}`} car={car} />
+          ))
         ) : (
           <p className="mx-auto">No listings available.</p>
         )}

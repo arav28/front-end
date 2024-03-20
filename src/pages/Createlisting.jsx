@@ -33,13 +33,13 @@ export default function CreateListing() {
         const response = await fetch('/api/v1/cars/getAllOwnerCarsListings', {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${currUser?.data?.token}` // Assuming the token is stored directly in currUser
+                Authorization: `Bearer ${currUser?.data?.token}` 
             }
         });
         const data = await response.json();
         console.log(data);
         if (data && Array.isArray(data.data)) {
-            setListings(data.data); // Assuming backend filters by ownerId, no need to filter on client-side
+            setListings(data.data); 
         } else {
             console.log('Unexpected response structure:', data);
         }
@@ -55,7 +55,7 @@ useEffect(() => {
 }, [currItemLocation]);
 useEffect(() => {
     fetchListings();
-}, [currUser?.token, currUser?.id]); // Dependency array to re-fetch on token or userID change
+}, [currUser?.token, currUser?.id]); 
 
 const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,7 +93,7 @@ const handleUpdate = (car) => {
                 throw new Error('Failed to save the car listing');
             }
 
-      // Assuming the response from the backend contains the created listing data
+
       const createdListing = await response.json();
       console.log("Listing created:", createdListing);
 
@@ -114,10 +114,9 @@ const handleUpdate = (car) => {
       await fetchListings();
       navigator('/Listingpage', { replace: true, state: { refresh: true } });
 
-      // Optionally, you can display a success message or redirect the user to a different page
     } catch (error) {
       console.error("Error creating listing:", error);
-      // Optionally, you can display an error message to the user
+
     }
   };
 
@@ -139,7 +138,7 @@ const handleUpdate = (car) => {
         );
       }
 
-      // Use a functional update to remove the deleted item from the state
+      // Functional update to remove the deleted item from the state
       setListings((currentListings) =>
         currentListings.filter((car) => car._id !== carId)
       );
