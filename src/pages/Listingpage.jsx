@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
+
 
 const ListingCard = ({ car }) => {
   // Define a placeholder image path
@@ -46,6 +48,9 @@ export default function Listingpage() {
   const [error, setError] = useState(null);
   const { currUser } = useSelector((state) => state.user_mod);
   
+
+  const location = useLocation();
+
   useEffect(() => {
     async function fetchListings() {
       setIsLoading(true); // Begin loading
@@ -56,13 +61,14 @@ export default function Listingpage() {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${currUser?.data?.token}`
-            , // Uncomment and replace if you need to send an authorization token
+            , 
           },
         });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data);
         setCars(data.data);
       } catch (error) {
         console.error("Error fetching listings:", error);
@@ -73,7 +79,7 @@ export default function Listingpage() {
     }
 
     fetchListings();
-  }, []);
+  }, [location.state?.refresh]);
 
   return (
     <main className="container mx-auto p-4 justify-center">
