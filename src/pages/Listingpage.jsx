@@ -11,7 +11,7 @@ function formatDate(isoString) {
   });
 }
 
-const ListingCard = ({ car }) => {
+export const ListingCard = ({ car }) => {
 
   const placeholderImage = "../../assets/car2.jpg";
   const formattedAvailableFrom = formatDate(car.availableFrom);
