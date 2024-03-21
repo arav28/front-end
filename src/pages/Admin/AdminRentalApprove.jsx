@@ -101,12 +101,15 @@ export default function CRUDListings() {
         {isLoading ? (
           <p className="mx-auto">Loading...</p>
         ) : cars.length > 0 ? (
-          cars.map((car) => (
-            <AdminListingCard key={`${car.id}-${Math.random()}`} 
-            car={car}
-            onApproval = {()=> handleApprove(car._id)}  
-            onDenial = {()=> handleDeny(car._id)}
-            />
+          cars.map((car, index) => (
+            <React.Fragment key={`${car.id}-${Math.random()}`}>
+              <AdminListingCard
+                car={car}
+                onApproval={() => handleApprove(car._id)}
+                onDenial={() => handleDeny(car._id)}
+              />
+              {index < cars.length - 1 && <div style={{ width: '16px' }} />} {/* Adjust the width as needed */}
+            </React.Fragment>
           ))
         ) : (
           <p className="mx-auto">No listings available.</p>
@@ -114,4 +117,5 @@ export default function CRUDListings() {
       </section>
     </main>
   );
+  
 }
